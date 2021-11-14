@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maps</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script defer src="js/initMapProperties.js"></script>
+</head>
+<body>
+<h1>My Map</h1>
+<div id="map"></div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyVlhHTMJOJTcHkVYm7kJqdafL1agtFpM&callback=initMap">
+</script>
+<!-- Modal = popup window. -->
+<!-- div encloses the entire popup window -->
+<div class="modal" id="modal">
+    <div class="modal-header">
+        <div class="title">Example Modal</div>
+        <button data-close-button class="close-button ">&times;</button>
+    </div>
+    <!-- the body has all the input fields in it. They are later given as parameter to the "editMarker() function" -->
+    <div class="modal-body">
+        <div class="modal-form">
+            <table class="modal-form-table">
+                <tbody>
+                    <tr>
+                        <td><label for="marker-name">Name: </label></td>
+                        <td><input type="text" id="marker-name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-place">Ort: </label></td>
+                        <td><input type="text" id="marker-place"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-plz">PLZ: </label></td>
+                        <td><input type="number" id="marker-plz"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-address">Adresse: </label></td>
+                        <td><input type="text" id="marker-address"></td>
+                    </tr>
+                    <tr>
+                       <td><label for="marker-person">Ansprechperson: </label></td>
+                        <td><input type="text" id="marker-person"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-telNr">TelefonNr.: </label></td>
+                        <td><input type="tel" id="marker-telNr"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-status">Status: </label></td>
+                        <td><input type="text" id="marker-status"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="marker-choice">Beziehung:</label></td>
+                        <td><select name="marker-choice" id="marker-choice">
+                            <option value="black">Unbesichtigt</option>
+                            <option value="red">Uninteressiert</option>
+                            <option value="yellow">Potentieller Kunde</option>
+                            <option value="green">Zusage</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><!-- the button takes all the data typed in and calls editMarker() -->
+                            <button data-close-button type="button" name="marker-submit" class="close-button" onclick="editMarker({
+            name:document.getElementById('marker-name').value,
+            place:document.getElementById('marker-place').value,
+            plz:document.getElementById('marker-plz').value,
+            address:document.getElementById('marker-address').value,
+            person:document.getElementById('marker-person').value,
+            telnr:document.getElementById('marker-telNr').value,
+            status:document.getElementById('marker-status').value,
+            connection:document.getElementById('marker-choice').value
+            }, document.getElementById('map'))">Save</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="overlay"></div>
+</body>
+</html>
